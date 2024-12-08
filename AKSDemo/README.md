@@ -87,8 +87,8 @@ metadata:
 spec: null
 replicas: 1
 selector:
-  matchLabels: null
-app: init-container-test
+  matchLabels:
+    app: init-container-test
 template:
   metadata:
     labels:
@@ -239,20 +239,20 @@ selector:
   matchLabels:
     app: demo-app
     version: blue
-spec: null
-template:
-  metadata:
-    labels:
-      app: demo-app
-      version: blue
-  spec:
-    agentpool: nodepool1
-    containers:
-    - image: nginx:1.19
-      name: blue-app
-    nodeSelector: null
-    ports:
-    - containerPort: 80
+spec:
+  template:
+    metadata:
+      labels:
+        app: demo-app
+        version: blue
+    spec:
+      agentpool: nodepool1
+      containers:
+      - image: nginx:1.19
+        name: blue-app
+    nodeSelector: 
+      ports:
+      - containerPort: 80
 
 ```
 green-deployment.yaml
@@ -307,9 +307,9 @@ metadata:
 spec: null
 serviceName: test-service
 replicas: 3
-selector: null
-matchLabels:
-  app: test-app
+selector: 
+  matchLabels:
+    app: test-app
 template:
   metadata: null
   labels:
